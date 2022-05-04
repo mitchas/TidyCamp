@@ -274,7 +274,7 @@
 
 <script>
 // Components
-import Callout from "@/components/ui/Common/Callout";
+// import Callout from "@/components/ui/Common/Callout";
 import Confirm from "@/components/ui/Modals/Confirm";
 import Modal from "@/components/ui/Modals/Modal";
 import ThemeEditor from "@/components/ui/Single/ThemeEditor";
@@ -285,7 +285,7 @@ export default {
 	name: "settings",
 
 	components: {
-		Callout,
+		// Callout,
 		Confirm,
 		Modal,
 		ThemeEditor,
@@ -344,16 +344,16 @@ export default {
 		// 	},
 		// },
 		sortedApps() {
-			return _orderBy(this.apps, 'category')
+			return _orderBy(this.apps, "category");
 		},
 		userPreferences: {
 			get() {
-				return this.$store.getters["User/preferences"]
+				return this.$store.getters["User/preferences"];
 			},
 		},
 		appData: {
 			get() {
-				return this.$store.getters["User/apps"]
+				return this.$store.getters["User/apps"];
 			},
 		},
 		
@@ -381,17 +381,17 @@ export default {
 
 		// Updates preference in store
 		updatePreference: function(key){
-			this.$store.dispatch("User/TOGGLE_PREFERENCE", key)
+			this.$store.dispatch("User/TOGGLE_PREFERENCE", key);
 		},
 
 		// Enable or disable app 
 		toggleApp: function(key){
-			this.$store.dispatch("User/TOGGLE_APP", key)
+			this.$store.dispatch("User/TOGGLE_APP", key);
 		},
 
 		// Sets default app based on key
 		setDefaultApp: function(key){
-			this.$store.dispatch("User/UPDATE_PREFERENCE", {key: "start", value: key})
+			this.$store.dispatch("User/UPDATE_PREFERENCE", {key: "start", value: key});
 		},
 		// Erases app data after confirmation
 		eraseAppData: function(key){
@@ -464,16 +464,16 @@ export default {
 			}
 
 			if(!preferencesMerged && !appDataMerged){
-				var mergeInfo = "No Data Merged"
+				var mergeInfo = "No Data Merged";
 			}else{
-				var mergeInfo = "Merged "
+				var mergeInfo = "Merged ";
 			}
 			if(preferencesMerged){
-				mergeInfo = mergeInfo + "Preferences "
+				mergeInfo = mergeInfo + "Preferences ";
 				if(appDataMerged){ mergeInfo = mergeInfo + "& "; }
 			}
 			if(appDataMerged){
-				mergeInfo = mergeInfo + "App Data"
+				mergeInfo = mergeInfo + "App Data";
 			}
 
 			setTimeout(() => {
