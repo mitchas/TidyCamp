@@ -22,11 +22,6 @@
 				<transition-group name="load">
 					<!-- Data loading -->
 					<div id="dataLoading" key="1" v-if="$store.getters['Hold/isLoading'] == 'data'"><div id="loaderElement"></div></div>
-					<!-- Page loading -->
-					<div id="pageLoading" key="2" v-if="$store.getters['Hold/isLoading'] == 'page'">
-						<img src="@/assets/branding/logo-light.png" title="Logo" alt="Logo" v-if="!$store.getters['User/darkMode']"/>
-						<img src="@/assets/branding/logo-dark.png"  title="Logo" alt="Logo" v-else />
-					</div>
 				</transition-group>
 
 
@@ -206,36 +201,6 @@ export default {
 		100%{
 			width: 0px;
 			left: 100%;
-		}
-	}
-	#pageLoading{
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		z-index: 5000;
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-		img{
-			margin: 0 auto;
-			height: 80px;
-			width: auto;
-			animation: pageLoader 1.5s ease-in-out 0s infinite normal;
-		}
-	}
-	@keyframes pageLoader {
-		0.0%{
-			transform: scale(1);
-		}
-		50%{
-			transform: scale(1.3);
-		}
-		99.5%{
-			transform: scale(1);
 		}
 	}
 

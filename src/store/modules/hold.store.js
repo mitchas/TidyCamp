@@ -95,10 +95,6 @@ const actions = {
 	// Loading
 	LOADING({ commit, getters, dispatch }, value) {
 		var type = "data";
-		if(value == "page"){
-			type = "page";
-			commit("SCROLL_LOCK", true);
-		}
 		commit("SET_LOADING", type);
 
 		// Auto timeout after 20s if it's not false
@@ -106,15 +102,11 @@ const actions = {
 			if(getters.isLoading != false){
 				dispatch("STOP_LOAD");
 			}
-		// }, 4000)
 		}, 20000);
 	},
 	// Stop all loading indicators
 	STOP_LOAD({ commit, getters, dispatch }) {
 		if(getters.isLoading){
-			if(getters.isLoading == "page"){
-				commit("SCROLL_LOCK", false);
-			}
 			commit("SET_LOADING", false);
 		}
 	},

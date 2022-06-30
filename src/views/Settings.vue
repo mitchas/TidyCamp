@@ -6,7 +6,7 @@
 	<div class="padded">
 
 		<!-- User App Preferences -->
-		<h1>Preferences</h1>
+		<h2>Preferences</h2>
 
 
 		<!-- Theme Switcher component -->
@@ -55,7 +55,7 @@
 
 
 		<!-- Your apps -->
-		<h1 class="mtop-xl">Your Apps</h1>
+		<h2 class="mtop-xl">Your Apps</h2>
 		<p>
 			You can turn off any apps you don't use so they don't show in the app launcher.
 			<br/>
@@ -318,7 +318,7 @@ export default {
 				"animations": {
 					title: "Motion",
 					icon: "fas fa-clapperboard",
-					description: "Control motion and animations used throughout the app.",
+					description: "Enable or disable motion and animations used throughout the app.",
 				},
 				"outlines": {
 					title: "Outlines",
@@ -518,9 +518,10 @@ export default {
 		flex-direction: column;
 		flex-basis: 320px;
 		border-radius: var(--borderRadius);
-		box-shadow: var(--shadow);
+		// box-shadow: var(--shadow);
 		color: var(--text);
 		background-color: var(--layer);
+		border: 1px solid var(--borderFade);
 
 		@media (max-width: $screenSM) {
 			flex-basis: 100%;

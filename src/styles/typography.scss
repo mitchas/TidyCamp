@@ -1,86 +1,48 @@
 //! Typography
-// Styling headers and other text elements
-// Text helper classes
-//
 
-//   Headings
-h1,h2,h3,h4,h5,h6{
-	color: var(--text);
-	font-weight: 600;
-	font-family: var(--primaryFont);
-
-	@media (max-width: $screenSM) {
-		// font-weight: 500;
-	}
-
-	// Header with button
-	button,
-	.button{
-		vertical-align: top;
-		height: fit-content;
-		line-height: 100%;
-		@media (max-width: $screenSM) {
-			float: right;
-			position: relative;
-			top: -4px
-		}
-	}
-
-	// Small, subheader
-	small{
-		display: block;
-		font-size: 68%;
-		margin-top: 10px;
-		font-weight: 400;
-
-		@media (max-width: $screenSM) {
-			font-size: 75%;
-		}
-	}
-
-	&.tall{
-		line-height: 150%;
-		small{
-			line-height: 150%;
-		}
-	}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--sans);
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  line-height: 1.5rem;
 }
-// h1
-h1{
-	font-size: 38px;	
-	line-height: 44px;
-	font-weight: 700;
-
-	@media (max-width: $screenSM) {
-		font-size: 34px;
-		line-height: 40px;
-		font-weight: 800;
-	}
+h1 {
+  font-size: 4.242rem;
+  line-height: 4.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
-// h2
-h2{
-	font-size: 30px;
-	line-height: 38px;
+h2 {
+  font-size: 3.228rem;
+  line-height: 3.5rem;
+  margin-top: 3rem;
+  margin-bottom: 0.9rem;
+  font-weight: 700;
 }
-// h3
-h3{
-	font-size: 22px;
-	line-height: 28px;
+h3 {
+  font-size: 2.214rem;
+  margin-bottom: 0.8rem;
+  line-height: 2.5rem;
+  font-weight: 700;
 }
-// h4
-h4{
-	font-size: 18px;
-	line-height: 24px;
+h4 {
+  font-size: 1.407rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.5rem;
 }
-// h5
-h5{
-	font-size: 15px;
-	line-height: 21px;
+h5 {
+  font-size: 1.01333333rem;
+  margin-bottom: 0.6rem;
 }
-// h6
-h6{
-	font-size: 13px;
-	line-height: 16px;
+h6 {
+  font-size: 0.79rem;
+  margin-bottom: 0.5rem;
 }
 
 
