@@ -116,7 +116,7 @@ export default {
 	//    Toast  
 	#toast{
 		position: fixed;
-		top: 20px;
+		top: 80px;
 		right: 20px;
 		float: right;
 		opacity: 1;
@@ -137,7 +137,7 @@ export default {
 			right: unset;
 			width: calc(100% - 20px);
 			border-radius: var(--borderRadius);
-			top: 10px;
+			top: 80px;
 			box-sizing: border-box;
 			left: 10px;
 		}
@@ -158,7 +158,7 @@ export default {
 		.toast-content{
 			flex-grow: 3;
 			box-sizing: border-box;
-			padding: 20px 10px 20px 20px;
+			padding: 15px 10px 15px 20px;
 			display: flex;
 			color: inherit;
 
@@ -192,8 +192,8 @@ export default {
 					word-wrap: break-word;
 				}
 				.toast-body{
-					font-size: 0.8rem;
-					line-height: 14px;
+					font-size: 0.9rem;
+					line-height: 1.2rem;
 					font-weight: 500;
 					word-wrap: break-word;
 				}

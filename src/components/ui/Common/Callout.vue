@@ -68,11 +68,11 @@ export default {
 		max-width: var(--maxWidth);
 		box-sizing: border-box;
 		padding: 5px 5px 5px 5px;
-		border-radius: calc(var(--borderRadius) * 1.5);
+		border-radius: var(--borderRadius);
 		position: relative;
-		background-color: var(--blue);
-		border: 1px solid rgba(125,125,175,0.125);
-		color: var(--blueText);
+		background-color: var(--background);
+		border: 1px solid var(--blue);
+		color: var(--blue);
 
 		// Icon
 		.callout-icon{
@@ -83,8 +83,8 @@ export default {
 			justify-content: center;
 			text-align: center;
 			box-sizing: border-box;
-			font-size: 24px;
-			color: var(--blueText);
+			font-size: 2rem;
+			color: var(--blue);
 			padding: 8px 14px;
 			position: absolute;
 			top: 0;
@@ -103,7 +103,7 @@ export default {
 			padding: 15px 0 15px 0;
 			display: flex;
 			flex-direction: column;
-			font-size: 14px;
+			font-size: 1rem;
 			font-weight: 500;
 			justify-content: center;
 		}
@@ -111,10 +111,10 @@ export default {
 
 		// Colors
 		&.red{
-			background-color: var(--red);
-			color: var(--redText);
+			color: var(--red);
+			border-color: var(--red);
 			.callout-icon{
-				color: var(--redText);
+				color: var(--red);
 			}
 			a{
 				color: var(--redText);
@@ -125,10 +125,10 @@ export default {
 		}
 		// Orange
 		&.orange{
-			background-color: var(--orange);
-			color: var(--orangeText);
+			border-color: var(--orange);
+			color: var(--orange);
 			.callout-icon{
-				color: var(--orangeText);
+				color: var(--orange);
 			}
 			a{
 				color: var(--orangeText);
@@ -139,10 +139,10 @@ export default {
 		}
 		// Purple
 		&.purple{
-			background-color: var(--purple);
-			color: var(--purpleText);
+			border-color: var(--purple);
+			color: var(--purple);
 			.callout-icon{
-				color: var(--purpleText);
+				color: var(--purple);
 			}
 			a{
 				color: var(--purpleText);
@@ -153,10 +153,10 @@ export default {
 		}
 		// Pink
 		&.pink{
-			background-color: var(--pink);
-			color: var(--pinkText);
+			border-color: var(--pink);
+			color: var(--pink);
 			.callout-icon{
-				color: var(--pinkText);
+				color: var(--pink);
 			}
 			a{
 				color: var(--pinkText);
@@ -167,10 +167,10 @@ export default {
 		}
 		// Green
 		&.green{
-			background-color: var(--green);
-			color: var(--greenText);
+			border-color: var(--green);
+			color: var(--green);
 			.callout-icon{
-				color: var(--greenText);
+				color: var(--green);
 			}
 			a{
 				color: var(--greenText);
@@ -178,7 +178,7 @@ export default {
 		}
 		// Yellow
 		&.yellow{
-			background-color: var(--yellow);
+			border-color: var(--yellow);
 			color: var(--yellowText);
 			.callout-icon,
 			.callout-body{
@@ -190,10 +190,10 @@ export default {
 		}
 		// Grey
 		&.grey{
-			background-color: var(--grey);
-			color: var(--greyText);
+			border-color: var(--border);
+			color: var(--border);
 			.callout-icon{
-				color: var(--greyText);
+				color: var(--border);
 			}
 			a{
 				color: var(--greyText);
@@ -207,48 +207,23 @@ export default {
 		// small means lil smaller icon and smaller text
 		&.small{
 			padding: 0 0 0 0;
-			border-radius: var(--borderRadius);
 
 			.callout-icon{
-				font-size: 18px;
+				font-size: 1.5rem;
 			}
 			.callout-body{
 				padding: 10px 0 10px 0;
 				letter-spacing: 0px;
+				font-size: 0.9rem;
 			}
 		}
 		// big means bigger icon and bigger text
 		&.big{
 			padding: 20px 0 20px 0;
-			border-radius: 25px;
-			border-radius: calc(var(--borderRadius) * 2.5);
-
-			@media (max-width: $screenSM) {
-				padding: 20px 0 20px 0;
-			}
 
 			.callout-icon{
-				font-size: 42px;
+				font-size: 3.5rem;
 				padding: 0 24px 0 20px;
-				@media (max-width: $screenSM) {
-					font-size: 34px;
-				}	
-			}
-		}
-		// Giant makes giant transparent icon
-		&.giant{
-			padding: 30px 20px 30px 50px;
-			border-radius: calc(var(--borderRadius) * 3.5);
-
-			.callout-icon{
-				font-size: 82px;
-				width: 100px;
-				opacity: 0.2;
-				margin-left: 15px;
-				pointer-events: none;
-				&.spacer{
-					display: none;
-				}
 			}
 		}
 		// Unset max width

@@ -93,18 +93,15 @@ UI Elements
 		</div>
 
 
-
-
-		<h2 class="mtop-xl mbottom-sm">
-			Color Picker
-		</h2>
-
 		<!-- Tags -->
 		<h2 class="mtop-xl mbottom-md">
 			Tags
 		</h2>
 
-		<div class="flex gap">
+		<div class="flex gap flex-wrap">
+			<div class="tag inline-block">
+				Cow
+			</div>
 			<div class="tag red inline-block">
 				Beavers
 			</div>
@@ -133,11 +130,6 @@ UI Elements
 				Coyote
 			</div>
 		</div>
-		<div class="flex gap mtop-sm">
-			<div class="tag blue big inline-block">
-				Bigger Tag
-			</div>
-		</div>
 
 		
 		
@@ -152,7 +144,7 @@ UI Elements
 			<Callout
 				icon="far fa-money-bill-alt"
 				class="mbottom-sm max-width-small"
-				color="yellow"
+				color="grey"
 				size="small">
 				<span>Small Callout.</span>
 			</Callout>
@@ -163,7 +155,7 @@ UI Elements
 				color="green">
 				<span>Regular Callout.</span>
 			</Callout>
-			<!-- Giant Callout -->
+			<!-- Big Callout -->
 			<Callout
 				icon="far fa-shield-cross"
 				class="mbottom-sm max-width-small"
@@ -171,48 +163,23 @@ UI Elements
 				color="blue">
 				<span>Big Callout.</span>
 			</Callout>
-			<!-- Notice Callout -->
-			<Callout
-				icon="far fa-taxi"
-				class="mbottom-sm max-width-small"
-				size="giant"
-				color="purple">
-				<span>Giant Callout.</span>
-			</Callout>
 		</div>
 
-
-
-		<!-- Cards & Layouts -->
-		<h2 class="mtop-xl mbottom-sm">
-			Cards & Loaders
-		</h2>
-
-		<div class="card max-width-small">
-			<p>
-				This is a simple card wrapper to nest and organize things.
-			</p>
-
-			<!-- Card buttons -->
-			<div class="card-buttons">
-				<!-- Left button -->
-				<button class="button small" @click="showDataLoader()">
-					<i class="far fa-undo"></i>
-					<span>Show Data Loader</span>
-				</button>
-				<!-- Right button -->
-				<button class="button small" @click="showPageLoader()">
-					<i class="far fa-spinner"></i>
-					<span>Show Page Loader</span>
-				</button>
-			</div>
-		</div>
 
 
 		<h2 class="mtop-xl mbottom-sm">
 			Other Stuff
 		</h2>
 
+
+		<h4 class="mbottom-sm mtop-lg">Loaders</h4>
+
+		<p>Toggle the loader to indicate something is happening.</p>
+		<!-- Left button -->
+		<button class="button small" @click="showDataLoader()">
+			<i class="far fa-undo"></i>
+			<span>Show Data Loader</span>
+		</button>
 
 		<h4 class="mbottom-sm mtop-lg">BreadCrumbs</h4>
 		<!-- Breadcrumbs -->
@@ -227,6 +194,9 @@ UI Elements
 				<span>wow</span>
 			</div>
 		</div>
+
+
+		
 
 
 		<!-- Spacer -->

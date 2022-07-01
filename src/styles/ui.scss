@@ -9,66 +9,70 @@
 
 // Tag
 .tag{
-	background-color: var(--blue);
-	color: var(--blueText);
-	font-size: 11px;
-	padding: 0 7px;
-	height: 20px;
-	line-height: 20px;
+	background-color: var(--background);
+	color: var(--text);
+	font-size: 0.85rem;
+	padding: 0.3rem 8px;
 	font-weight: 600;
 	border-radius: var(--borderRadius);
+	border-radius: calc(var(--borderRadius) * 2);
 	white-space: nowrap;
+	border: 1px solid var(--text);
 
 	i:first-child{
-		margin-right: 4px;
+		position: relative;
+		left: -4px;
 	}
 	i:last-child{
 		margin-left: 4px;
 	}
 
-	&.big{
-		height: 24px;
-		line-height: 22px;
-		padding: 0 10px;
-		font-size: 12px;
-		border-radius: calc(var(--borderRadius) * 2);
-	}
-
 	&.red{
-		background-color: var(--red);
-		color: var(--redText);
+		// background-color: var(--red);
+		// color: var(--redText);
+		border-color: var(--red);
+		background-color: var(--background);
+		color: var(--red);
 	}
 	&.orange{
-		background-color: var(--orange);
-		color: var(--orangeText);
+		border-color: var(--orange);
+		background-color: var(--background);
+		color: var(--orange);
 	}
 	&.yellow{
-		background-color: var(--yellow);
-		color: var(--yellowText);
+		border-color: var(--yellow);
+		background-color: var(--background);
+		color: var(--yellow);
 	}
 	&.green{
-		background-color: var(--green);
-		color: var(--greenText);
+		border-color: var(--green);
+		background-color: var(--background);
+		color: var(--green);
 	}
 	&.blue{
-		background-color: var(--blue);
-		color: var(--blueText);
+		border-color: var(--blue);
+		background-color: var(--background);
+		color: var(--blue);
 	}
 	&.sky{
-		background-color: var(--sky);
-		color: var(--skyText);
+		border-color: var(--sky);
+		background-color: var(--background);
+		color: var(--sky);
 	}
 	&.pink{
-		background-color: var(--pink);
-		color: var(--pinkText);
+		border-color: var(--pink);
+		background-color: var(--background);
+		color: var(--pink);
 	}
 	&.purple{
-		background-color: var(--purple);
-		color: var(--purpleText);
+		border-color: var(--purple);
+		background-color: var(--background);
+		color: var(--purple);
 	}
 	&.grey{
-		background-color: var(--grey);
-		color: var(--greyText);
+		border-color: var(--border);
+		background-color: var(--background);
+		color: var(--border);
 	}
 
 }

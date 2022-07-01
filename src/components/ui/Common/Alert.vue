@@ -56,7 +56,6 @@ export default {
 				}, 150);
 			}else{
 				// Else show alert
-				
 				// Set new alert data
 				_this.alertMessage = message;
 				_this.alertIcon = icon;
@@ -93,15 +92,15 @@ export default {
 			background-color: var(--yellow);
 			color: var(--yellowText);
 			box-sizing: border-box;
-			padding: 24px 18px 24px 18px;
+			padding: 16px 8px 16px 8px;
 			border-radius: calc(var(--borderRadius) * 2);
 			border-bottom-right-radius: calc(var(--borderRadius) / 2);
-			font-size: 15px;
+			font-size: 1rem;
 			box-shadow: var(--shadow);
 			font-weight: 600;
 			margin: 0 auto;
 			max-width: 400px;
-			min-width: 250px;
+			min-width: 200px;
 			display: flex;
 			justify-content: center;
 			box-shadow: var(--shadow);
@@ -117,6 +116,7 @@ export default {
 				margin: 0 15px 0 0;
 				position: relative;
 				transform: scale(1.5);
+				top: 2px;
 			}
 
 			&:hover{
