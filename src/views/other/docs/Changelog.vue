@@ -5,33 +5,26 @@ Changelog
 <template>
 	<div class="page narrow-page">
 
-		<!-- Header -->
-		<h1 class="mtop-md">Changelog</h1>
-		<div class="inline-block">
-			<div class="tag yellow mtop-xs">
-				<i class="far fa-sync-alt mright-xxs"></i>
-				<span>Last updated {{lastUpdate}}</span>
-			</div>		
-		</div>		
-
-
 		<div v-for="(change, key) in changes" :key="key" class="changelog-block">
 			<div class="changelog-date">
 				{{change.date}}
 			</div>
 			<div class="changelog-body">
 
-				<h3>
+				<h4>
 					{{change.title}}&nbsp;
 					<i v-if="change.icon" :class="'text-' + change.color + ' ' + change.icon"></i>
-				</h3>
+				</h4>
 
-				<p class="big">{{change.description}}</p>
-				<ul v-if="change.items[0]" class="changelog-ul">
-					<li v-for="(item, itemkey) in change.items" :key="itemkey">
-						{{item}}
-					</li>
-				</ul>
+				<p>{{change.description}}</p>
+				<p>
+					<ul v-if="change.items[0]" class="changelog-ul">
+						<li v-for="(item, itemkey) in change.items" :key="itemkey">
+							{{item}}
+						</li>
+					</ul>
+				</p>
+
 
 			</div>
 		</div>
@@ -62,7 +55,6 @@ export default {
 	data() {
 		return {
 			changes: changelog.changes,
-			lastUpdate: this.$store.getters["Changelog/lastupdate"],
 			company: process.env.VUE_APP_COMPANY_NAME,
 			url: process.env.VUE_APP_FULL_URL,
 		};
@@ -76,5 +68,41 @@ export default {
 </script>
 
 <style lang="scss">
-	// 
+
+// Changelog/Feature block
+.changelog-block{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 45px 0 0 0;
+
+	.changelog-date{
+		width: 30%;
+		min-width: 200px;
+		font-size: 16px;
+		font-weight: 600;
+		padding: 5px 0 15px 0;
+		box-sizing: border-box;
+		color: var(--primary);
+
+		@media (max-width: $screenSM) {
+			width: 100%;
+		}
+	}
+
+	.changelog-body{
+		flex-grow: 3;
+
+		h4{
+			margin: 0;
+			padding: 0;
+		}
+
+		.changelog-ul{
+			font-size: 18px;
+			li{
+				margin: 4px 0;
+			}
+		}
+	}
+}
 </style>

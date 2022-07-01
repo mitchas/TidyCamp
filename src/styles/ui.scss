@@ -178,39 +178,6 @@
 }
 
 
-// Changelog/Feature block
-.changelog-block{
-	display: flex;
-	flex-wrap: wrap;
-	padding: 45px 0 0 0;
-
-
-	.changelog-date{
-		width: 30%;
-		min-width: 200px;
-		font-size: 16px;
-		font-weight: 600;
-		padding: 5px 0 15px 0;
-		box-sizing: border-box;
-		color: var(--primary);
-
-		@media (max-width: $screenSM) {
-			width: 100%;
-		}
-	}
-
-	.changelog-body{
-		flex-grow: 3;
-
-		.changelog-ul{
-			font-size: 18px;
-			li{
-				margin: 4px 0;
-			}
-		}
-	}
-}
-
 
 
 // Shadow and hover stuff
