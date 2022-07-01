@@ -7,7 +7,7 @@ Internal Design page to show existing UI elements
 	<div>
 
 		<!-- Section tabs -->
-		<div class="tabs page-nav no-scrollbars">
+		<div class="tabs no-scrollbars mtop-md">
 
 			<!-- Colors -->
 			<button class="tab" v-bind:class="{'active': viewTab == 'colors'}" @click="viewTab = 'colors'">
@@ -34,7 +34,6 @@ Internal Design page to show existing UI elements
 			</button>
 
 		</div>
-
 
 		<div class="padded">
 

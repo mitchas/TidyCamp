@@ -6,29 +6,29 @@
 	<div class="padded">
 
 		<!-- User App Preferences -->
-		<h2>Preferences</h2>
+		<h3 class="mtop-lg">Preferences</h3>
 
 
 		<!-- Theme Switcher component -->
 		<ThemeEditor v-if="themeModal" v-on:closeEditor="themeModal = false"></ThemeEditor>
 
 
-		<div class="toggle-grid mtop-md">
+		<div class="card-grid mtop-md">
 
 			<!-- Change Theme -->
-			<div class="toggle-card">
-				<label class="tc-main">
-					<i class="tc-icon fas fa-palette"></i>
+			<div class="card">
+				<label class="card-main">
+					<i class="card-icon fas fa-palette"></i>
 					<b>Visual Theme</b>
 					<!-- Button -->
-					<div class="tc-input">
+					<div class="card-input">
 						<button class="button small" @click="themeModal = true">
 							<span>Edit</span>
 							<i class="fas fa-droplet"></i>
 						</button>
 					</div>
 				</label>
-				<div class="tc-body">
+				<div class="card-body">
 					<p>
 						Adjust the color theme and other visual preferences.
 					</p>
@@ -36,15 +36,15 @@
 			</div>
 
 			<!-- Loop toggle preferences -->
-			<div class="toggle-card" v-for="(pref, key) in preferences" :key="key" :class="{'inactive': pref.disabled}">
-				<label class="tc-main">
-					<i :class="'tc-icon ' + pref.icon"></i>
+			<div class="card" v-for="(pref, key) in preferences" :key="key" :class="{'inactive': pref.disabled}">
+				<label class="card-main">
+					<i :class="'card-icon ' + pref.icon"></i>
 					<b>{{pref.title}}</b>
-					<div class="tc-input">
+					<div class="card-input">
 						<input type="checkbox" class="toggle on-off" :checked="userPreferences[key]" @input="updatePreference(key)" :disabled="pref.disabled"/>
 					</div>
 				</label>
-				<div class="tc-body">
+				<div class="card-body">
 					<p>
 						{{pref.description}}
 					</p>
@@ -55,43 +55,42 @@
 
 
 		<!-- Your apps -->
-		<h2 class="mtop-xl">Your Apps</h2>
+		<h3 class="mtop-xl">Apps</h3>
 		<p>
-			You can turn off any apps you don't use so they don't show in the app launcher.
+			You can turn off any apps you don't use so they don't show in the app list.
 			<br/>
 			The <i class="fas fa-circle-star text-blue"></i> default app is what loads first when you first open tidy.camp.
 		</p>
 
+		<div class="card-grid mtop-md" v-if="sortedApps">
 
-		<div class="toggle-grid mtop-md" v-if="sortedApps">
-
-			<div class="toggle-card" v-for="(app, key) in sortedApps" :key="key" :class="{'inactive': appData[app.id] && appData[app.id].enabled == false}">
-				<label class="tc-main" v-if="sortedApps[key]">
-					<i :class="'tc-icon ' +app.icon"></i>
+			<div class="card" v-for="(app, key) in sortedApps" :key="key" :class="{'inactive': appData[app.id] && appData[app.id].enabled == false}">
+				<label class="card-main" v-if="sortedApps[key]">
+					<i :class="'card-icon ' +app.icon"></i>
 					<b>{{app.title}}</b>
-					<div class="tc-input" v-if="!sortedApps[key].persistent">
+					<div class="card-input" v-if="!sortedApps[key].persistent">
 						<input type="checkbox" class="toggle on-off" :checked="appData[app.id] && appData[app.id].enabled" @input="toggleApp(app.id)" />
 					</div>
 				</label>
 				<!-- Toggle Body -->
-				<div class="tc-body">
+				<div class="card-body">
 					<p>
 						{{app.description}}
 					</p>
 				</div>
 				<!-- Footer controls -->
-				<div class="tc-footer">
-					<div class="tc-tags">
+				<div class="card-footer">
+					<div class="card-tags">
 						<span :class="'tag ' + app.category">{{app.category}}</span>
 						<!-- <span :class="'tag grey' + apps[key].color">Household</span> -->
 					</div>
-					<div class="tc-actions" v-if="!app.persistent">
+					<div class="card-actions" v-if="!app.persistent">
 						<!-- Default -->
-						<button class="tc-action-button" :class="{'active': userPreferences.start == sortedApps[key].path}" @click="setDefaultApp(app.path)">
+						<button class="card-action-button" :class="{'active': userPreferences.start == sortedApps[key].path}" @click="setDefaultApp(app.path)">
 							<i class="fas fa-circle-star"></i>
 						</button>
 						<!-- Clear Data -->
-						<button class="tc-action-button" @click="eraseAppData(key)">
+						<button class="card-action-button" @click="eraseAppData(key)">
 							<i class="fas fa-eraser"></i>
 						</button>
 					</div>
@@ -120,7 +119,7 @@
 
 
 		<!-- Your Data -->
-		<h1 class="mtop-xl">Your Data</h1>
+		<h3 class="mtop-xl">Your Data</h3>
 		<p>
 			{{appName}} does not store any of your data.
 			<br/>
@@ -132,12 +131,12 @@
 		</p>
 
 		<!-- Data Controls -->
-		<button class="button blue mright-xs mbottom-xs" @click="exportModal = true">
+		<button class="button grey mright-xs mbottom-xs" @click="exportModal = true">
 			<i class="fas fa-laptop-arrow-down"></i>
 			<span>View Data</span>
 		</button>
 		<!-- Import Data -->
-		<button class="button green mright-xs mbottom-xs" @click="importModal = true;">
+		<button class="button grey mright-xs mbottom-xs" @click="importModal = true;">
 			<i class="fas fa-file-import"></i>
 			<span>Import Data</span>
 		</button>
@@ -159,32 +158,32 @@
 		</p>
 
 		<!-- Privacy Policy -->
-		<router-link to="/privacy" class="button pink mright-xs mbottom-xs">
+		<router-link to="/privacy" class="button grey mright-xs mbottom-xs">
 			<i class="fas fa-blinds"></i>
 			<span>Privacy Policy</span>
 		</router-link>
 		<!-- Terms of Service -->
-		<router-link to="/terms" class="button purple mbottom-xs">
+		<router-link to="/terms" class="button grey mbottom-xs">
 			<i class="fas fa-file-check"></i>
 			<span>Terms of Service</span>
 		</router-link>
 
 
 		<!-- Development -->
-		<h1 class="mtop-xl">Development</h1>
-		<p>
+		<h3 class="mtop-xl">Development</h3>
+		<p class="mbottom-md">
 			View the changelog for the latest updates & changes. 
 			<br/>
 			The design page is for previewing UI elements.
 		</p>
 
 		<!-- Changelog -->
-		<router-link to="/changelog" class="button yellow mright-xs mbottom-xs">
+		<router-link to="/changelog" class="button grey mright-xs mbottom-xs">
 			<i class="fas fa-list"></i>
 			<span>Changelog</span>
 		</router-link>
 		<!-- Design -->
-		<router-link to="/design" class="button orange mbottom-xs">
+		<router-link to="/design" class="button grey mbottom-xs">
 			<i class="fas fa-browser"></i>
 			<span>Design</span>
 		</router-link>
@@ -325,6 +324,11 @@ export default {
 					icon: "fas fa-border-bottom-right",
 					description: "Dashed accessibility outline that appears when you click buttons or forms.",
 				},
+				"app_launcher": {
+					title: "App Launcher",
+					icon: "fas fa-grid",
+					description: "Use the logo in the top left to toggle the app launcher instead of home page.",
+				},
 				"notifications": {
 					title: "Notifications",
 					icon: "fas fa-bell-on",
@@ -338,11 +342,6 @@ export default {
 
 	computed: {
 
-		// test: {
-		// 	get() {
-		// 		return this.$store.getters["User/preferences"];
-		// 	},
-		// },
 		sortedApps() {
 			return _orderBy(this.apps, "category");
 		},
@@ -387,6 +386,11 @@ export default {
 		// Enable or disable app 
 		toggleApp: function(key){
 			this.$store.dispatch("User/TOGGLE_APP", key);
+
+			// Disable favorite if user disables app and it's set
+			if(this.apps[key].path == this.userPreferences.start){
+				this.setDefaultApp(null);
+			}
 		},
 
 		// Sets default app based on key
@@ -503,141 +507,6 @@ export default {
 
 <style lang="scss">
 
-
-.toggle-grid{
-	display: flex;
-	gap: 30px;
-	flex-wrap: wrap;
-
-	@media (max-width: $screenSM) {
-		gap: 15px
-	}
-
-	.toggle-card{
-		display: flex;
-		flex-direction: column;
-		flex-basis: 320px;
-		border-radius: var(--borderRadius);
-		// box-shadow: var(--shadow);
-		color: var(--text);
-		background-color: var(--layer);
-		border: 1px solid var(--borderFade);
-
-		@media (max-width: $screenSM) {
-			flex-basis: 100%;
-		}
-
-		&.inactive{
-			color: var(--textFade);
-
-			.tc-main b,
-			.tc-body p{
-				color: var(--textFade);
-			}
-			.tc-main .tc-icon{
-				background-color: transparent;
-				color: var(--textFade);
-			}
-			.tag{
-				opacity: 0.5;
-			}
-		}
-
-		.tc-main{
-			box-sizing: border-box;
-			display: flex;
-			padding: 20px 20px 12px 20px;
-
-			@media (max-width: $screenSM) {
-				padding: 20px 20px 10px 20px;
-			}
-
-			.tc-icon{
-				width: 50px;
-				height: 50px;
-				background-color: var(--grey);
-				border-radius: var(--borderRadius);
-				font-size: 28px;
-				text-align: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-			}
-			b{
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				flex-grow: 3;
-				font-size: 16px;
-				font-weight: 600;
-				box-sizing: border-box;
-				padding-left: 10px;
-			}
-			.tc-input{
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-			}
-		}
-		.tc-body{
-			box-sizing: border-box;
-			padding: 0 20px 20px 20px;
-			flex-grow: 3;
-
-			p{
-				margin: 0;
-				padding: 0;
-				line-height: 20px;
-				font-size: 14px;
-			}
-		}
-		// Footer
-		.tc-footer{
-			display: flex;
-			justify-content: space-between;
-			box-sizing: border-box;
-			padding: 0 15px 15px 15px;
-
-			.tc-tags{
-				display: flex;
-				gap: 10px;
-				text-transform: capitalize;
-
-				.tag{
-					&.system{background-color: var(--grey); color: var(--greyText);}
-					&.productivity{background-color: var(--yellow); color: var(--yellowText);}
-					&.home{background-color: var(--purple); color: var(--purpleText)}
-					&.health{background-color: var(--pink); color: var(--pinkText)}
-				}
-			}
-			.tc-actions{
-				flex-grow: 3;
-				display: flex;
-				justify-content: flex-end;
-				gap: 8px;
-				
-				.tc-action-button{
-					height: 20px;
-					line-height: 20px;
-					font-size: 18px;
-					color: var(--text);
-					opacity: 0.2;
-					transition: var(--transition);
-
-					&:hover,
-					&:focus{
-						opacity: 1;
-					}
-
-					&.active{
-						color: var(--blue);
-						opacity: 1;
-					}
-				}
-			}
-		}
-	}
-}
 
 
 

@@ -1,17 +1,6 @@
 <!-- 
-//! Toast
+Toast
  	Toast element to display messages
- 		Added to App component to be available on anay page/view
- 		Uses global plugin method to send toast data to home component, which will then relay the data to this component
- 		Maybe not the best way, but it made sense to me at the time
- 
- 		Props: 
- 			visible - visiblity of toast
- 			icon - Font Awesome full icon class (ex 'far fa-star')
- 			color - color class - red, green, yellow, orange, grey, or primary (default)
- 			title - Short bold text on top
- 			body - the long text for the toast message
- 
 -->
 
 <template>
@@ -135,7 +124,7 @@ export default {
 		flex-direction: column;
 		background-color: var(--blue);
 		border-radius: var(--borderRadius);
-		border-radius: calc(var(--borderRadius) * 3);
+		border-radius: calc(var(--borderRadius) * 2);
 		transition: var(--transition);
 		transform: translateY(0px);
 		transform-origin: center right;
@@ -177,7 +166,7 @@ export default {
 			// Icon left on toast
 			.toast-icon{
 				text-align: center;
-				font-size: 42px;
+				font-size: 3rem;
 				box-sizing: content-box;
 				height: auto;
 				display: flex;
@@ -197,21 +186,22 @@ export default {
 				min-width: 160px;
 
 				.toast-title{
-					font-size: 16px;
+					font-size: 1rem;
 					font-weight: 700;
 					padding-bottom: 6px;
 					word-wrap: break-word;
 				}
 				.toast-body{
-					font-size: 13px;
+					font-size: 0.8rem;
 					line-height: 14px;
 					font-weight: 500;
 					word-wrap: break-word;
 				}
 				.toast-info{
-					font-size: 12px;
+					font-size: 0.8rem;
 					padding-top: 4px;
 					font-weight: 500;
+					line-height: 1.6rem;
 					opacity: 0.6;
 					text-align: right;
 				}

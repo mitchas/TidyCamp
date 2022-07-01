@@ -1,7 +1,6 @@
 //! Store
 // Store and get values across components 
 // Main store file imports others from ./modules
-// 
 
 import Vue from "vue";
 import Vuex from "vuex";
@@ -12,7 +11,6 @@ import Device from "./modules/device.store";
 import Hold from "./modules/hold.store";
 import Site from "./modules/site.store";
 import User from "./modules/user.store";
-import Changelog from "./modules/changelog.store";
 
 const debug = process.env.NODE_ENV !== "production";
 
@@ -24,7 +22,6 @@ export default new Vuex.Store({
 		Hold,
 		Site,
 		User,
-		Changelog,
 	},
 	strict: debug,
 	plugins: debug? [ createLogger() ] : [],

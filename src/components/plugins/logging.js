@@ -1,5 +1,5 @@
 // Logging,
-// Prettty replacement for default logging
+// Pretty replacement for default logging
 
 export default {
 

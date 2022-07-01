@@ -1,5 +1,5 @@
 <!-- 
-//! Confirm Leave component
+Confirm Leave component
  	Small modal that displays confirmation to leave defined pages,
  		Pages defined in plugins.js navigate() function
 -->

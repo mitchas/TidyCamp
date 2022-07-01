@@ -19,7 +19,6 @@ import Vue2TouchEvents from "vue2-touch-events";
 // Custom Plugins
 import plugins from "@/components/plugins/plugins.js";
 import "@/components/plugins/Dayjs";
-// import "@/components/plugins/logging";
 import logging from "@/components/plugins/logging.js";
 
 // Set configs

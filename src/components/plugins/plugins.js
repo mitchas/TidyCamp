@@ -1,45 +1,25 @@
 //! Plugins
-// Global methods to use in any mixin or component
-//
-// cleanArray(array): removes dupes from array
-// 	scrollUp(): scrolls the page to top
-// 	deplural(string): removes trailing s from string
-// 	isValidURL(url): Returns true if URL is valid
-// 	twentyFour(time): Converts 24h to 12hr
-// 	lettersAndNumbers(string): Converts string to only letters and numbers and spaces
-// 	spaceUnderscore(string): Converts spaces to underscorees
-// 	underscoreSpace(string): Converts underscores to spaces
-// 	spaceDash(string): Converts spaces to dashes
-// 	dashSpace(string): Converts dashes to spaces
-// 	navigate(route): pushes route to update vue router
-// 	tab(url): opens url in new tab
-// 	firebaseDashboard(type, payload): opens url in new tab
-// 	share(shareTextt, alertText): Activates native sharing dialog or falls back to copy to clipboard
-// 	copyToClipboard(name, value): Copies value to clipboard, shows toast confirmation
-// 	toast(): provides easy this.toast() call to use in any component.
-// 	hello(message, icon, color): Shows tiny yellow toast for a brief moment
-// 	zoomTo(coordinates): Zooms to coordinates on map if available
-// 	getGeolocation(): Gets device geolocation and stores in store
-// 	linkPreview(link): Gets open graph data from url
+// Global functions to use in any mixin or component
 
 import { _ } from "core-js";
-import axios from "axios";
 
 export default {
 
 	install(Vue, options){
 
-		// Array Duplicates
-		// Removes duplicates in array
-		Vue.prototype.cleanArray = function(array) {
-			var a = array.concat();
-			for(var i=0; i<a.length; ++i) {
-				for(var j=i+1; j<a.length; ++j) {
-					if(a[i] === a[j])
-						a.splice(j--, 1);
-				}
+		// Toast & Hello
+		// Sends notifications to root component to display
+		Vue.prototype.toast = function(title, body, color, icon, path, info) {
+			this.$root.$children[0].$refs.toastComponent.showToast(title, body, color, icon, path, info);
+			if(this.$store.getters["Device/hasSmallScreen"] && this.$store.getters["Device/hasTouch"]){
+				navigator.vibrate(15);
 			}
-			return a;
+		};
+		Vue.prototype.hello = function(message, icon, color) {
+			this.$root.$children[0].$refs.alertComponent.showAlert(message, icon, color);
+			if(this.$store.getters["Device/hasSmallScreen"] && this.$store.getters["Device/hasTouch"]){
+				navigator.vibrate(15);
+			}
 		};
 
 		// Scroll up
@@ -50,40 +30,6 @@ export default {
 				left: 0,
 				behavior: "smooth"
 			  });
-		};
-
-
-		// Removes S from string if it's the last letter
-		Vue.prototype.deplural = function(string) {
-			if(string){
-				return string.toString().replace(/s$/, "");
-			}else{
-				return null;
-			}
-		};
-
-		// Removes S from string if it's the last letter
-		Vue.prototype.isValidURL = function(url) {
-			const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
-			this.validUrl = regex.test(url);
-			return this.validUrl;
-		};
-
-
-		// Replace underscore with space
-		Vue.prototype.twentyFour = function(time) {
-
-			var split = time.split(":");
-			var hours = parseInt(split[0]);
-			var minutes = split[1];
-			var ampm = "am";
-
-			if(hours > 12){
-				hours = hours - 12;
-				ampm = "pm";
-			}
-
-			return hours + ":" + minutes + ampm;
 		};
 
 		// Replace string with only letters and numbers
@@ -97,17 +43,11 @@ export default {
 		Vue.prototype.underscoreSpace = function(string) {
 			return string.toString().replace(/_/g," ");
 		};
-		Vue.prototype.spaceDash = function(string) {
-			return string.toString().replace(/ /g,"-");
-		};
-		Vue.prototype.dashSpace = function(string) {
-			return string.toString().replace(/-/g," ");
-		};
 
 		// Navigate
 		// Function to navigate with -> navigate("/route")
-		// This lets you use custom elements that are accessible/focusable, rather than router-link
 		// then use @click to navigate()
+		// Checks if Confirm Leave is enabled
 		Vue.prototype.navigate = function(route, confirm) {
 
 			// If same route, don't navigate
@@ -129,34 +69,11 @@ export default {
 			}
 		};
 
-
 		// Open url in new tab
 		Vue.prototype.tab = function(url) {
 			window.open(url, "_blank");
 		};
 
-
-		// Open url in new tab
-		Vue.prototype.firebaseDashboard = function(type, payload) {
-			var url = null;
-
-			var projectId = "";
-			projectId = process.env.VUE_APP_FIREBASE_PROJECTID;
-
-			// Open to firestore uid
-			if(type == "uid"){
-				url = "https://console.firebase.google.com/project/" + projectId + "/firestore/data/~2Fusers~2F" + payload;
-			}else if(type == "data"){
-				url = "https://console.firebase.google.com/project/" + projectId + "/firestore/data/~2F" + payload.collection + "~2F" + payload.key;
-			}else if(type == "auth"){
-				// Open to auth page
-				url = "https://console.firebase.google.com/u/0/project/" + projectId + "/authentication/users";
-			}
-
-			if(url){
-				window.open(url, "_blank");
-			}
-		};
 
 		// Native Sharing
 		// Falls back to copy to clipboard
@@ -200,27 +117,6 @@ export default {
 			}
 		};
 
-		// Toast & Hello
-		// Toast & Hello
-		Vue.prototype.toast = function(title, body, color, icon, path, info) {
-			this.$root.$children[0].$refs.toastComponent.showToast(title, body, color, icon, path, info);
-			if(this.$store.getters["Device/hasSmallScreen"] && this.$store.getters["Device/hasTouch"]){
-				navigator.vibrate(15);
-			}
-		};
-		Vue.prototype.hello = function(message, icon, color) {
-			this.$root.$children[0].$refs.alertComponent.showAlert(message, icon, color);
-			if(this.$store.getters["Device/hasSmallScreen"] && this.$store.getters["Device/hasTouch"]){
-				navigator.vibrate(15);
-			}
-		};
-
-		// Zoom to if map is available
-		Vue.prototype.zoomTo = function(coordinates) {
-			this.$store.dispatch("Map/CHANGE_MAP_CENTER", coordinates);
-			this.$store.dispatch("Map/CHANGE_MAP_ZOOM", 11);
-			this.$store.dispatch("Map/CHANGE_MAP_DISPLAY", "visible");
-		};
 
 		// Get Geolocation
 		Vue.prototype.getGeolocation = function(noAlerts) {
@@ -269,33 +165,7 @@ export default {
 				);
 	
 			});
-
-
-			
 		};
-
-		// Get Convert rich blocks to HTML
-		Vue.prototype.linkPreview = function(url) {
-			return new Promise((resolve, reject) => {
-
-				let _this = this;
-
-				var encodedURL = encodeURIComponent(url);
-				var key = process.env.VUE_APP_OPENGRAPH_KEY;
-				var getURL = "https://opengraph.io/api/1.1/site/" + encodedURL + "?app_id=" + key;
-				
-				axios.get(getURL).then(response => {
-					resolve(response.data.hybridGraph);
-				}).catch(e => {
-					reject(e);
-				});
-
-				
-				
-				
-			});
-		};
-		
 	
 	}
   

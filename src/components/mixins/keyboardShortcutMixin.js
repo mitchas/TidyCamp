@@ -1,5 +1,5 @@
-//! Keyboard Shortcut Mixin
-// 		from https://gist.github.com/loilo/2a1834dc20d842f63bd048ffbcf3dc19
+// Keyboard Shortcut Mixin
+// 	from https://gist.github.com/loilo/2a1834dc20d842f63bd048ffbcf3dc19
 /** 
  * @group Mixins
  * Mixin to use keyboard shortcuts in a view.

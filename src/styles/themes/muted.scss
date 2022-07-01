@@ -31,12 +31,11 @@
 		--greyFade: rgba(236, 237, 247, 0.7);
 		--greyText: var(--text);
 	--border: #183062;
-		--borderText: var(--background);
 		--borderFade: rgba(3, 3, 51, 0.2);
+		--borderText: var(--background);
 
 	--text: #030932;
 		--textFade: rgba(3, 9, 50, 0.5);
-		--textText: var(--background);
 	
 	--shadow: rgba(0, 0, 50, 0.08) 0px 4px 12px;
 	--shadow-Hover: 0px 2px 20px -5px rgba(30, 30, 60, 0.15);
@@ -71,7 +70,6 @@
 	--white: #FFFFFF;
 	--text: #FFFFFF;
 		--textFade: rgba(255,255,255, 0.5);
-		--textText: var(--background);
 	--grey: #242535;
 		--greyFade: rgba(36, 37, 53, 0.7);
 		--greyText: var(--white);

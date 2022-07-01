@@ -1,4 +1,5 @@
 //! Typography
+// Header, Paragraph, and other text styles
 
 h1,
 h2,
@@ -6,13 +7,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--sans);
   margin-top: 1.5rem;
   margin-bottom: 0;
   line-height: 1.5rem;
 }
 h1 {
-  font-size: 4.242rem;
+  font-size: 4.042rem;
   line-height: 4.5rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
@@ -35,14 +35,29 @@ h4 {
   font-size: 1.407rem;
   margin-bottom: 0.7rem;
   line-height: 1.5rem;
+  font-weight: 700;
 }
 h5 {
   font-size: 1.01333333rem;
+  font-weight: 700;
   margin-bottom: 0.6rem;
 }
 h6 {
-  font-size: 0.79rem;
+  font-size: 0.89rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  color: var(--textFade)
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small{
+	font-size: 0.55em;
+	display: block;
+	font-weight: 500;
 }
 
 
@@ -50,52 +65,24 @@ h6 {
 // Paragraphs
 p,
 .paragraph{
-	font-size: 15px;
-	line-height: 26px;
+	font-size: 1rem;
+	line-height: 1.75rem;
 	max-width: 700px;
 	padding: 12px 0;
 	color: var(--text);
 	font-weight: 400;
-	// Mobile changes
-	@media (max-width: $screenSM) {
-		font-size: 14.5px;
-	}
-	@media (max-width: $screenSM) {
-		font-size: 14px;
-		line-height: 24px;
-	}
-
-	// Decrease sizing
-	&.smaller{
-		font-size: 12px;
-		line-height: 18px;
-	}
 
 	// Decrease sizing
 	&.small{
-		font-size: 13.5px;
-		line-height: 22px;
-		// Mobile changes
-		@media (max-width: $screenSM) {
-			font-size: 13px;
-			line-height: 20px;
-		}
+		font-size: 0.8rem;
+		line-height: 1.6rem;
 	}
 	// Increase sizing
 	&.big{
-		font-size: 20px;
-		line-height: 36px;
-		// Mobile changes
-		@media (max-width: $screenSM) {
-			font-size: 17px;
-			line-height: 26px;
-		}
+		font-size: 1.2rem;
+		line-height: 2.4rem;
 	}
 
-	&.tight{
-		line-height: unset;
-	}
-	
 	// Bold
 	b{
 		font-weight: 700;
@@ -114,7 +101,7 @@ em,
 
 // Links
 a{
-	color: var(--text);
+	color: var(--primary);
 	transition: var(--transition);
 	letter-spacing: -0.1px;
 	font-weight: bold;
@@ -124,32 +111,12 @@ a{
 		cursor: pointer;
 		transition: var(--transition);
 		outline-color: transparent;
-		text-decoration: underline;
-	}
-	&.small{
-		font-size: 13px;
-		font-weight: 500;
-	}
-	&.tiny{
-		font-size: 11px;
-		font-weight: 500;
-	}
-	&.no-color:hover{
-		color: inherit;
-	}
-	&.no-underline:hover{
-		text-decoration: none;
-	}
+		color: var(--green);
 
-	&.underline{
-		text-decoration: underline;
-		&:hover{
-			text-decoration: none;
+		:not(i),
+		:not(p){
+			text-decoration: underline;
 		}
-	}
-
-	&.fade{
-		opacity: 0.6;
 	}
 }
 
@@ -162,7 +129,7 @@ ol{
 	padding: 6px 0 6px 25px;
 
 	li{
-		line-height: 140%;
+		line-height: 1.4rem;
 		padding: 2px 0;
 	}
 }
@@ -178,19 +145,16 @@ ul{
 //   Modifiers
 
 .text-small{
-	font-size: 11px;
+	font-size: 0.8em;
 }
 .text-smaller{
-	font-size: 75% !important;
-}
-.text-medium{
-	font-size: 14px;
+	font-size: 0.65em !important;
 }
 .text-large{
-	font-size: 16px;
+	font-size: 1.2em;
 }
 .text-larger{
-	font-size: 20px;
+	font-size: 1.45em;
 }
 .text-light{
 	font-weight: 400;
@@ -240,22 +204,12 @@ hr{
 	height: 1px;
 	overflow: hidden;
 	margin: 8px auto;
-	
-	&.page-end{
-		max-width: 100px;
-		margin-left: auto;
-		margin-right: auto;
-		border: none;
-		height: 8px;
-		background-color: var(--grey);
-		border-radius: 4px;
-	}
 }
 
 // Small
 small{
-	font-size: 85%;
-	line-height: 120%;
+	font-size: 0.85em;
+	line-height: 1em;
 }
 
 // Code & Pre
@@ -263,7 +217,6 @@ code{
 	width: fit-content;
 	background-color: var(--greyLight);
 	font-family: var(--monospace);
-	font-size: 12px;
 	box-sizing: border-box;
 	padding: 4px;
 	background-color: var(--grey);

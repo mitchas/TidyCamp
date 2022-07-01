@@ -1,8 +1,7 @@
 <!-- 
-//! Callout Component
-// Example:
-// <Callout icon="fas fa-ban" size="giant" color="red"> <slot> </Callout>
-// 
+Callout Component
+Example:
+<Callout icon="fas fa-ban" size="giant" color="red"> <slot> </Callout>
 -->
 
 <template>

@@ -13,85 +13,68 @@
 		}">
 
 
-		<transition name="load">
+		<div :class="'theme-' + $store.getters['Hold/pageTheme']" id="mainScrollView">
+		
+			<!-- Loaders -->
+			<transition-group name="load">
+				<!-- Data loading -->
+				<div id="dataLoading" key="1" v-if="$store.getters['Hold/isLoading'] == 'data'"><div id="loaderElement"></div></div>
+			</transition-group>
 
-			<!-- App wrapper only shown if page mounted -->
-			<div class="app-wrapper" :class="'theme-' + $store.getters['Hold/pageTheme']">
+			<!-- Nav Bar -->
+			<NavBar></NavBar>
+
+			<!-- All page content contained within main -->
+			<main id="content">
+				<transition name="page" mode="out-in">
+						<router-view />
+				</transition>
+			</main>
+
+
+			<!-- Toast Component -->
+			<Toast ref="toastComponent"></Toast>
+
+			<!-- Alert Component -->
+			<Alert ref="alertComponent"></Alert>
+
+			<!-- Confirm Leave Component -->
+			<ConfirmLeave ref="confirmLeaveComponent"></ConfirmLeave>
+
+			<!-- Lock scrolling on HTML if scrollLock is true -->
+			<v-style v-if="$store.getters['Hold/scrollLock']">
+				html{
+					overflow: hidden;
+				}
+			</v-style>
+
+			<!-- Toggle-able preferences that change HTML -->
+			<!-- Rounded borders -->
+			<v-style v-if="$store.getters['User/preferences'].round_borders">
+				:root {
+					--borderRadius: 10px;
+				}
+			</v-style>
+			<v-style v-else>
+				:root {
+					--borderRadius: 1px;
+				}
+			</v-style>
+			<!-- Fonts -->
+			<v-style v-if="$store.getters['User/preferences'].font == 'serif'">
+				:root {--primaryFont: var(--serif);}
+			</v-style>
+			<v-style v-else-if="$store.getters['User/preferences'].font == 'mono'">
+				:root {--primaryFont: var(--monospace);}
+			</v-style>
+			<v-style v-else>
+				:root {--primaryFont: var(--sans);}
+			</v-style>
 			
-				<!-- Loaders -->
-				<transition-group name="load">
-					<!-- Data loading -->
-					<div id="dataLoading" key="1" v-if="$store.getters['Hold/isLoading'] == 'data'"><div id="loaderElement"></div></div>
-				</transition-group>
 
 
-				<!-- All page content contained within main -->
-				<main id="content">
+		</div>
 
-					<!-- Top bar component -->
-					<!-- Logo, account dropdown, etc -->
-					<NavBar></NavBar>
-
-					<!-- Center/Main Content -->
-					<div class="body-content" id="mainScrollView">
-
-						<transition name="page" mode="out-in">
-							<!-- Router only loads when auth is determined false (no user), or dataLoaded >= 2, meaning profile + user loaded -->
-							<router-view v-if="$store.getters['User/auth'] == false || ($store.getters['User/auth'] && $store.getters['Hold/dataLoaded'] >= 2)"/>
-						</transition>
-					</div>
-
-				</main>
-
-
-				<!-- Toast Component -->
-				<Toast ref="toastComponent"></Toast>
-
-				<!-- Alert Component -->
-				<Alert ref="alertComponent"></Alert>
-
-				<!-- Confirm Leave Component -->
-				<ConfirmLeave ref="confirmLeaveComponent"></ConfirmLeave>
-
-				<!-- Lock scrolling on HTML if scrollLock is true -->
-				<v-style v-if="$store.getters['Hold/scrollLock']">
-					html{
-						overflow: hidden;
-					}
-					@media (max-width: 780px) {
-						padding-right: 8px;
-						box-sizing: border-box;
-					}
-				</v-style>
-
-				<!-- Toggle-able preferences that change HTML -->
-				<!-- Rounded borders -->
-				<v-style v-if="$store.getters['User/preferences'].round_borders">
-					:root {
-						--borderRadius: 10px;
-					}
-				</v-style>
-				<v-style v-else>
-					:root {
-						--borderRadius: 1px;
-					}
-				</v-style>
-				<!-- Fonts -->
-				<v-style v-if="$store.getters['User/preferences'].font == 'serif'">
-					:root {--primaryFont: var(--serif);}
-				</v-style>
-				<v-style v-else-if="$store.getters['User/preferences'].font == 'mono'">
-					:root {--primaryFont: var(--monospace);}
-				</v-style>
-				<v-style v-else>
-					:root {--primaryFont: var(--sans);}
-				</v-style>
-				
-
-
-			</div>
-
-		</transition>
 
 	</div>
 </template>
@@ -104,7 +87,7 @@ import Alert from "@/components/ui/Common/Alert";
 import Toast from "@/components/ui/Common/Toast";
 import ConfirmLeave from "@/components/ui/Modals/ConfirmLeave";
 // Mixins
-import screenResizeMixin from "@/components/mixins/ui/screenResizeMixin.js";
+import screenResizeMixin from "@/components/mixins/screenResizeMixin.js";
 
 export default {
 	name: "app",
@@ -164,16 +147,20 @@ export default {
 <style lang="scss">
 
 
-	// Data Loading
+	// Data Loader
 	#dataLoading{
 		display: block;
 		position: fixed;
-		bottom: 0;
+		top: 0;
 		left: -5vw;
 		width: 110vw;
 		height: 6px;
 		z-index: 1000;
-		border-radius: 6px;
+		border-radius: var(-borderRadius);
+
+		@media (max-width: $screenSM) {
+			height: 4px;
+		}
 
 		#loaderElement{
 			display: block;
@@ -182,52 +169,22 @@ export default {
 			left: 0;
 			height: 100%;
 			width: 0px;
-			background-color: var(--text);
+			background-color: var(--primary);
 			margin: 0 auto;
 			animation: dataLoading 1.8s ease-in-out 0s infinite normal;
 		}
 	}
 	@keyframes dataLoading {
-		0.0%{
-			width: 0px;
-			left: 0%;
-		}
-		40%{
-			width: 60vw;
-		}
-		60%{
-			width: 40vw;
-		}
-		100%{
-			width: 0px;
-			left: 100%;
-		}
+		0.0%{ width: 0px; left: 0%;}
+		40%{ width: 60vw;}
+		60%{ width: 40vw;}
+		100%{ width: 0px; left: 100%;}
 	}
 
 
 	// Outermost wrapper
+	// UI Toggle Controls
 	#app {
-		display: block;
-		width: 100%;
-		margin: 0;
-		box-sizing: border-box;
-		max-height: 100%;
-		min-height: 100%;
-		height: 100%;
-
-		// Inner wrapper only shown on mountt
-		.app-wrapper{
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			margin: 0 auto;
-			display: block;
-			max-height: 100%;
-			min-height: 100%;
-			height: 100%;
-			overflow: hidden;
-		}
-
 		// Toggleable UI preferences
 		&.no-animations{
 			*{
@@ -246,49 +203,16 @@ export default {
 				}
 			}
 		}
-
 	}
 
 
 	//  Main App Content
 	main#content{
-		box-sizing: border-box;
-		padding-right: 0;
-		display: flex;
-		position: relative;
-		flex-grow: 3;
-		overflow: hidden;
-		max-height: 100%;
+		overflow-x: hidden;
+		width: 100%;
 		height: 100%;
-
-		// Stack on mobile
-		@media (max-width: $screenSM) {
-			flex-direction: column;
-		}
-
-		// Main view content
-		.body-content{
-			box-sizing: border-box;
-			flex-grow: 3;
-			// to account for header
-			height: 100%;
-			overflow-x: hidden;
-			width: 100%;
-			transition: 0.2s 0.5s;
-			height: 100%;
-			overflow-Y: auto;
-			overflow-X: hidden;
-			padding: 85px 0;
-			@media (max-width: $screenSM) {
-				padding: 30px 0 100px 0;
-			}
-		}
-	}
-
-	// Suspension banner
-	.suspension-banner{
-		max-width: 90%;
-		margin: 10vh auto;
+		box-sizing: border-box;
+		padding-top: 60px;
 	}
 
 

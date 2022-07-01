@@ -1,5 +1,5 @@
 <!-- 
-Theme Switcher
+Theme Editor
 -->
 <template>
 	<Modal size=""
@@ -14,22 +14,7 @@ Theme Switcher
 		@dismissed="closeModal()">
 
 
-
-		<div id="themeInput">
-			<Selections 
-				:textSearch="true"
-				:suggestions="themes"
-				:limit="1" 
-				direction="bottom"
-				selectLabel="Select"
-				noSelectionText="Choose a Theme"
-				icon="far fa-palette"
-				:activeSelection="selectedTheme"
-				@changed="selectTheme">
-			</Selections>
-		</div>
-
-
+		<!-- Theme Preview -->
 		<div class="selected-theme">
 			<div></div>
 			<div></div>
@@ -41,6 +26,20 @@ Theme Switcher
 			<div></div>
 			<div></div>
 			<div></div>
+		</div>
+
+		<div id="themeInput">
+			<Selections 
+				:textSearch="true"
+				:suggestions="themes"
+				:limit="1" 
+				direction="bottom"
+				selectLabel="Select Theme"
+				noSelectionText="Choose a Theme"
+				icon="far fa-palette"
+				:activeSelection="selectedTheme"
+				@changed="selectTheme">
+			</Selections>
 		</div>
 
 		<!-- Toggles -->
@@ -172,25 +171,29 @@ export default {
 	#themeInput{
 		display: block;
 		width: 100%;
+		margin-bottom: 25px;
 	}
 	.selected-theme{
 		display: flex;
+		justify-content: center;
+		margin: 0 auto;
 		width: 100%;
-		margin: 15px auto;
 		flex-wrap: wrap;
-		gap: 3px;
+		position: relative;
+		top: -10px;
 
 		div{
 			flex-grow: 3;
 			display: flex;
 			height: 100%;
 			box-sizing: border-box;
-			min-width: 44px;
-			flex-basis: 44px;
-			max-width: 44px;
-			height: 44px;
+			min-width: 28px;
+			flex-basis: 28px;
+			max-width: 28px;
+			height: 28px;
 			border: 1px solid var(--border);
-			border-radius: calc(var(--borderRadius));
+			border-right: 0;
+			// border-radius: calc(var(--borderRadius));
 			// border: 1px solid var(--border);
 			font-size: 14px;
 			font-weight: 800;
@@ -235,8 +238,9 @@ export default {
 				color:var(--backgroundText);
 			}
 			&:nth-child(10){
-				color:var(--textText);
 				background-color:var(--text);
+				color:var(--background);
+				border-right: 1px solid var(--border);
 			}
 		}
 

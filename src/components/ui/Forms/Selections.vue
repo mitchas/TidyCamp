@@ -1,10 +1,7 @@
 <!--
-// 
-// ! Selections.vue
-// _________________________
-//	Selection popout with suggestions and optional text box for searching.
-//
-// -->
+Selections.vue
+Selection popout with suggestions and optional text box for searching.
+-->
 
 <template>
 

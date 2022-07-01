@@ -1,5 +1,6 @@
 //! Device Store
 // Holds device settings and info
+
 import debounce from "lodash/debounce";
 
 const state = {

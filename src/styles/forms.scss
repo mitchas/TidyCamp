@@ -89,28 +89,20 @@ input[type="url"],
 .input-style,
 select,
 textarea{
-	font-family: var(--primaryFont);
+	font-family: var(--systemFont);
 	appearance: none;
-	-webkit-appearance: none;
 	max-width: 100%;
 	width: 100%;
-    font-size: 15px;
-	line-height: 14px;
+    font-size: 1rem;
 	box-sizing: border-box;
-	padding: 0 20px 0 20px;
+	padding: 0px 20px 0px 20px;
 	color: var(--text);
 	border: none;
 	border-radius: var(--borderRadius);
-	border-radius: calc(var(--borderRadius) / 2);
-	border: 2px solid var(--border);
+	border: 1px solid var(--border);
 	transition: all 0.1s ease, border-color 0.15s ease;
 	font-weight: 500;
 	height: var(--inputHeight);
-
-	@media (max-width: $screenSM) {
-		font-size: 14px;
-		font-weight: 400;
-	}
 
 	// Hover and focus states
 	&:hover,
@@ -120,24 +112,23 @@ textarea{
 	
 	// Placeholder
 	&::placeholder{
-		opacity: 0.35;
+		opacity: 0.25;
 		color: var(--text);
 	}
 
 	// Disabled
 	&:disabled{
+		pointer-events: none;
 		border-color: var(--grey);
-		background-color: var(--greyFade);
+		background-color: var(--grey);
+		&::placeholder{
+			opacity: 0.45;
+			color: var(--text);
+		}
 	}
 	// Active
 	&:focus{
 		border-color: var(--blue) !important;
-	}
-	&.transparent{
-		background-color: transparent;
-		&:focus{
-			background-color: var(--background);
-		}
 	}
 }
 
@@ -151,18 +142,6 @@ textarea{
 	@media (max-width: $screenSM) {
 		font-size: 14px;
 		line-height: 26px;
-	}
-
-	&.small{
-		font-size: 12px;
-		line-height: 15px;
-	}
-
-	&.code{
-		font-family: var(--monospace);
-		font-size: 11px;
-		font-weight: 400;
-		line-height: 16px;
 	}
 }
 // Select needs own height definition
@@ -216,18 +195,14 @@ select{
 		background-color: var(--background);
 		padding: 0 15px 1px 18px;
 		color: var(--text);
-		font-size: 13px;
+		font-size: 0.9rem;
 		font-weight: 600;
-		border-top-left-radius: calc(var(--borderRadius) / 2);
-		border-bottom-left-radius: calc(var(--borderRadius) / 2);
+		border-top-left-radius: var(--borderRadius);
+		border-bottom-left-radius: var(--borderRadius);
 		background-color: var(--background);
-		border: 2px solid var(--border);
+		border: 1px solid var(--border);
 		border-right: none;
 		white-space: nowrap;
-
-		@media (max-width: $screenSM) {
-			padding: 0 10px 0px 10px;
-		}
 
 		i{
 			font-size: 18px;
@@ -243,8 +218,8 @@ select{
 		border-radius: 0;
 
 		&:last-child{
-			border-top-right-radius: calc(var(--borderRadius) / 2);
-			border-bottom-right-radius: calc(var(--borderRadius) / 2);
+			border-top-right-radius: var(--borderRadius);
+			border-bottom-right-radius: var(--borderRadius);
 		}
 
 	}
@@ -260,18 +235,13 @@ select{
 .button-input{
 	display: flex;
 	position: relative;
-	height: 40px;
 	width: 100%;
-
-	@media (max-width: $screenSM) {
-		height: 40px;
-	}
 
 	button{
 		position: relative;
 		top: 0px;
 		right: 0px;
-		border-radius: calc(var(--borderRadius) / 2);
+		border-radius: var(--borderRadius);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border: none;
@@ -279,12 +249,6 @@ select{
 		min-width: fit-content;
 		height: var(--inputHeight);
 		border: 2px solid var(--border);
-		&:hover{
-			transform: translateX(-2px);
-		}
-		&:active{
-			transform: translateX(0);
-		}
 	}
 	input, select{
 		border-top-right-radius: 0;
@@ -319,11 +283,11 @@ a.button,
 .button,
 .cdx-button{
 	border-radius: var(--borderRadius);
-	border-radius: calc(var(--borderRadius) * 1.5);
-	box-shadow: var(--shadow);
-	font-size: 14px;
-	font-weight: 500;
-	padding: 14px 22px 14px 22px;
+	border-radius: calc(var(--borderRadius) * 1.25);
+	// box-shadow: var(--shadow);
+	font-size: 0.9rem;
+	font-weight: 600;
+	padding: 13px 22px 13px 22px;
 	line-height: 100%;
 	box-sizing: border-box;
 	transform: scale(1);
@@ -332,12 +296,6 @@ a.button,
 	color: var(--primaryText);
 	transition: var(--transition);
 	font-family: var(--primaryFont);
-
-
-	@media (max-width: $screenSM) {
-		border-radius: calc(var(--borderRadius) * 1.85);
-		padding: 18px 24px 18px 24px;
-	}
 
 
 	// Increase icon size without affecting button size
@@ -355,15 +313,17 @@ a.button,
 	// States
 	&:hover{
 		cursor: pointer;
-		transform: scale(1.07);
 		transition: var(--transition);
+		:not(i){
+			text-decoration: underline;
+		}
 		span{
 			color: inherit;
 		}
 	}
 	&:active{
-		transition: all 0.25s ease;
-		transform: scale(1);
+		transition: all 0.05s ease;
+		transform: scale(0.965);
 	}
 	&:focus{
 		text-decoration: underline;
@@ -517,9 +477,6 @@ input[type="checkbox"]:focus {
 	color: var(--text);
 	background-color: var(--grey);
 	transform: scale(1);
-
-
-	
 	// Check icon
 	&:after {
 		//28x28 dimensions
@@ -547,7 +504,7 @@ input[type="checkbox"]:focus {
 	}
 
 	&:active {
-		transform: scale(1.1);
+		transform: scale(0.965);
 	}
 	// Full opacity icon
 	&:checked{
@@ -562,31 +519,12 @@ input[type="checkbox"]:focus {
 	// Disabled, 
 	&:disabled {
 		opacity: 0.35;
+		pointer-events: none;
 	}
 
-	// Dropdown circle with angle down
-	&.dropdown{
-		border-radius: 50%;
-		border-color: var(--borderFade);
-
-		&:after {
-			content: "\f0d7";
-			font-size: 22px;
-			left: 6px;
-			top: 1px;
-		}
-		&:checked{
-			border-bottom-right-radius:4px;
-			&:after{
-				content: '\f0d8';
-				top: 2px;
-			}
-		}
-	}
 }
 .radio{
 	border-radius: calc(var(--borderRadius) * 3);
-
 	&:after{
 		content: "\f111";
 		left: 6px;
@@ -674,6 +612,7 @@ input[type="checkbox"]:focus {
 
 	// Disabled, 
 	&:disabled {
+		pointer-events: none;
 		background-color: var(--greyFade);
 		&:after{
 			background-color: var(--borderFade);
@@ -722,7 +661,7 @@ input[type=range]:focus {
 	outline: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
-	background: var(--text);
+	background: var(--borderFade);
 	border: 0;
 	border-radius: calc(var(--borderRadius) * 3);
 	width: 100%;
@@ -759,13 +698,13 @@ input[type=range].line::-webkit-slider-thumb {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-	background: var(--text);
+	background: var(--borderFade);
 }
 input[type=range].white:focus::-webkit-slider-runnable-track {
-	background: var(--text);
+	background: var(--borderFade);
 }
 input[type=range]::-moz-range-track {
-	background: var(--text);
+	background: var(--borderFade);
 	border: 0;
 	border-radius: calc(var(--borderRadius) * 3);
 	width: 100%;
@@ -819,7 +758,7 @@ input[type=range].white::-ms-fill-lower {
 }
 
 input[type=range]::-ms-fill-upper {
-	background: var(--text);
+	background: var(--borderFade);
 	border: 0;
 	border-radius: calc(var(--borderRadius) * 3);
 }

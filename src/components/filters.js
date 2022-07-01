@@ -1,5 +1,6 @@
-//! Filters
+// Filters
 // 	Various for modifying data
+// 
 // 		titleCase(string): 
 // 		numberFormat(value, type): 
 // 

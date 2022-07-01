@@ -1,3 +1,5 @@
+//  Register Dayjs plugin with Vue
+
 import Vue from "vue";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";

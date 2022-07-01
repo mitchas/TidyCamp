@@ -1,6 +1,5 @@
 //! Base  
 // Base body, html, and other global styles
-// 
 
 // Universal 
 body, html{
@@ -8,42 +7,15 @@ body, html{
 	font-family: var(--primaryFont);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	min-height: 100%;
 	font-size: var(--baseFontSize);
-	width: 100%;
 	color: var(--text);
-	height: 100%;
-	max-height: 100%;
+	overflow-x: hidden;
 	background-color: var(--background);
 	@media (max-width: $screenSM) {
 		overscroll-behavior: contain;
     }
 }
-// html
-html{
-	display: flex;
-}
 
-// 
-// Body & Body classes 
-body{
-	max-height: none;
-	box-sizing: border-box;
-	min-height: 100%;
-	flex-grow: 3;	
-}
-
-
-// Prevent scrolling when full-screen elements, like modals, are visible
-.scroll-lock{
-	background-color: var(--red) !important;
-	// pointer-events: none;
-	// overflow: visible;
-	position: fixed;
-
-	// overflow: hidden;
-	// max-height:100vh;
-}
 // Disable default browser tap highlighting, smooth text
 // Disable text selection on mobile 
 *{
@@ -68,22 +40,6 @@ img{
 	user-select: none;
 }
 
-
-// Scroll bar
-::-webkit-scrollbar{
-	width: 3px;
-	height: 8px;
-}
-// Scrollbar Track
-::-webkit-scrollbar-track{
-	display: none;
-}
-// Scrollbar handle/thumb
-::-webkit-scrollbar-thumb{
-	background: var(--text);
-	box-sizing: border-box;
-	border-radius: 4px;
-}
 // Hide scrollbars
 .no-scrollbars,
 .no-scrollbars *{
@@ -110,17 +66,5 @@ img{
 	background: var(--blue); // Gecko Brooowsers
 	color: var(--background);
 }
-
-
-// Allow user select/highlight
-.select{
-	user-select: auto;
-}
-// Select all on click
-.select-all{
-	user-select: all;
-}
-
-
 
 

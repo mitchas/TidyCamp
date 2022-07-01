@@ -45,6 +45,7 @@ Changelog
 </template>
 
 <script>
+const changelog = require("@/definitions/changelog.js");
 
 export default {
   	name: "Changelog",
@@ -60,8 +61,8 @@ export default {
 	},
 	data() {
 		return {
+			changes: changelog.changes,
 			lastUpdate: this.$store.getters["Changelog/lastupdate"],
-			changes: this.$store.getters["Changelog/changes"],
 			company: process.env.VUE_APP_COMPANY_NAME,
 			url: process.env.VUE_APP_FULL_URL,
 		};

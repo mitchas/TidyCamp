@@ -6,16 +6,11 @@ Color Palette and Logos
 <template>
 	<div>
 
-		<h1 class="mbottom-md">
-			Colors
-		</h1>
-
-		<div class="ui-color-display">
+		<div class="ui-color-display mtop-lg">
 
 			<div v-for="color in normal_colors" :key="color" :class="'ui-color-box ' + color" :style="'background-color: var(--' + color + ');'">
 				<span class="code">{{getCSSVariable(color)}}</span>
 				<span>Text {{getCSSVariable(color + "Text")}}</span>
-				<small>Variable --{{color}}</small>
 			</div>
 
 		</div>
@@ -31,9 +26,9 @@ Color Palette and Logos
 		</div>
 
 
-		<h1 class="mbottom-md mtop-xl">
+		<h2 class="mbottom-md mtop-xl">
 			Logos
-		</h1>
+		</h2>
 
 
 		<div class="ui-logo-display">
@@ -132,6 +127,7 @@ export default {
 			font-size: 14px;
 			font-family: var(--monospace);
 			border-radius: calc(var(--borderRadius) * 2) !important;
+			min-height: 100px;
 
 			@media (max-width: $screenSM) {
 				width: 100%;

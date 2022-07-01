@@ -6,11 +6,6 @@
 .capitalize{
 	text-transform: capitalize;
 }
-.first-letter{
-	&::first-letter{
-		text-transform: capitalize;
-	}
-}
 .lowercase{
 	text-transform: lowercase;
 }
@@ -108,20 +103,6 @@
 // Pointer Events
 .no-pointer-events{
 	pointer-events: none;
-}
-
-// Line breaks for different screen sizes
-.break-md{
-	display: none;
-	@media (max-width: $screenSM) and (min-width: $screenSM) {
-		display: block;
-	}
-}
-.break-sm{
-	display: none;
-	@media (max-width: $screenSM) {
-		display: block;
-	}
 }
 
 // Show/hide

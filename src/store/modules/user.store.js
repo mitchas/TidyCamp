@@ -1,4 +1,4 @@
-//! User Store
+// User Store
 // Holds user settings. 
 // Also app data
 // Synced with Local Storage
@@ -21,6 +21,7 @@ const state = {
 		animations: true,
 		outlines: true,
 		notifications: false,
+		app_launcher: false,
 		start: "/",
 		theme: "default",
 		dark_mode: false,
@@ -67,7 +68,7 @@ const state = {
 			data: null,
 		},
 		"settings": {
-			enabled: null,
+			enabled: true,
 			data: null,
 		}
 	},
@@ -93,6 +94,9 @@ const getters = {
 	// Shortcuts
 	darkMode( state ) {
 		return state.preferences.dark_mode;
+	},
+	app_launcher( state ) {
+		return state.preferences.app_launcher;
 	},
 	theme( state ) {
 		return state.preferences.theme;
@@ -186,7 +190,7 @@ const actions = {
 
 			// Navigate to default page
 			setTimeout(function(){
-				if(router.currentRoute.path == "/"){
+				if(router.currentRoute.path == "/" && userPreferences.start){
 					setTimeout(function(){
 						router.push(userPreferences.start);
 					}, 200);

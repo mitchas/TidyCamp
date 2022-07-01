@@ -6,9 +6,9 @@
 <template>
 	<div class="ptop-lg">
 
-		<h1 class="mbottom-md">
+		<h2 class="mbottom-md">
 			Buttons
-		</h1>
+		</h2>
 
 		<!-- Buttons -->
 		<button class="button mright-sm mbottom-sm">
@@ -96,9 +96,9 @@
 
 
 		<!-- Inputs -->
-		<h1 class="mbottom-md mtop-xl">
+		<h2 class="mbottom-md mtop-xl">
 			Inputs
-		</h1>
+		</h2>
 
 		<!-- Tooltip -->
 		<label class="flex">
@@ -213,9 +213,9 @@
 
 
 		<!-- Custom Form Element -->
-		<h1 class="mbottom-md mtop-xl">
+		<h2 class="mbottom-md mtop-xl">
 			Custom Forms
-		</h1>
+		</h2>
 
 		<h3 class="mtop-lg">
 			Selections

@@ -1,5 +1,5 @@
 <!-- 
-//! Modal Component
+Modal Component
  	Show modal with buttons at bottom,
  		Accepts props:  
  			- show: condition to show modal

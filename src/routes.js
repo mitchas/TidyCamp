@@ -32,6 +32,14 @@ export const routes = [
 				title: "Tasks — " + AppName,
 			}
 		},
+		{
+			path: "/time",
+			name: "time",
+			component: () => import(/* webpackChunkName: "time" */ "./views/apps/Tasks/Time.vue"),
+			meta: {
+				title: "Time — " + AppName,
+			}
+		},
 	// 
 	// ! Static Docs / Technical
 	//

@@ -6,8 +6,8 @@ const state = {
 	data: {
 
 		// Active apps
-		apps: [
-			{
+		apps: {
+			tasks: {
 				id: "tasks",
 				title: "Tasks",
 				headline: "Daily tasks and reminders",
@@ -17,7 +17,7 @@ const state = {
 				color: "red",
 				category: "productivity",
 			},
-			{
+			time: {
 				id: "time",
 				title: "Time Tracking",
 				headline: "Keep track of your time",
@@ -27,7 +27,7 @@ const state = {
 				color: "sky",
 				category: "productivity",
 			},
-			{
+			travel: {
 				id: "travel",
 				title: "Travel Planner",
 				headline: "Organize your trips",
@@ -37,7 +37,7 @@ const state = {
 				color: "purple",
 				category: "productivity",
 			},
-			{
+			water: {
 				id: "water",
 				title: "Water",
 				headline: "Remember to stay hydrated",
@@ -47,17 +47,17 @@ const state = {
 				color: "orange",
 				category: "health",
 			},
-			{
+			food: {
 				id: "food",
 				title: "Food",
 				headline: "Daily food tracking",
-				description: "Track your meals or food intake for the day",
+				description: "Simple tracking for your meals or calories with notes",
 				path: "/food",
 				icon: "fas fa-fork-knife",
 				color: "yellow",
 				category: "health",
 			},
-			{
+			fasting: {
 				id: "fasting",
 				title: "Fasting",
 				headline: "Follow a fasting cycle",
@@ -67,7 +67,7 @@ const state = {
 				color: "yellow",
 				category: "health",
 			},
-			{
+			pills: {
 				id: "pills",
 				title: "Pills",
 				headline: "Medication schedule",
@@ -77,7 +77,7 @@ const state = {
 				color: "pink",
 				category: "health",
 			},
-			{
+			pantry: {
 				id: "pantry",
 				title: "Pantry",
 				headline: "Waste less food",
@@ -87,7 +87,7 @@ const state = {
 				color: "green",
 				category: "home",
 			},
-			{
+			recipes: {
 				id: "recipes",
 				title: "Recipes",
 				headline: "Simple recipes & cooking",
@@ -97,11 +97,11 @@ const state = {
 				color: "blue",
 				category: "home",
 			},
-			{
+			settings: {
 				id: "settings",
 				title: "Settings",
 				headline: "Set up camp",
-				description: "The settings app cannot be disabled. You'll need this.",
+				description: "Adjust how tidy.camp looks, behaves, and manages your data.",
 				path: "/settings",
 				icon: "fas fa-gear",
 				class: "settings",
@@ -109,7 +109,7 @@ const state = {
 				persistent: true,
 				category: "system",
 			},
-		]
+		}
 	},
 
 };

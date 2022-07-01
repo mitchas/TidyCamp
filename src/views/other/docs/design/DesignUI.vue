@@ -6,9 +6,9 @@ UI Elements
 	<div>
 
 
-		<h1 class="mbottom-md">
+		<h2 class="mbottom-md">
 			Toast & Alerts
-		</h1>
+		</h2>
 
 		<!-- Toast -->
 		<div class="mbottom-md">
@@ -95,22 +95,14 @@ UI Elements
 
 
 
-		<h1 class="mtop-xl mbottom-sm">
+		<h2 class="mtop-xl mbottom-sm">
 			Color Picker
-		</h1>
-
-		<!-- Theme color -->
-		<form class="theme-picker no-white max-width-small mbottom-md">
-			<label class="theme-color" v-for="(color, key) in colors" :key="key" :for="'col_' + color" :id="'theme_color_' + color" :class="{'active': hold.selectedColor == color}">
-				<input type="radio" :id="'col_' + color" v-model="hold.selectedColor" :value="color" :aria-label="color + ' Theme'" tabindex="0"/>
-			</label>
-		</form>
-
+		</h2>
 
 		<!-- Tags -->
-		<h1 class="mtop-xl mbottom-md">
+		<h2 class="mtop-xl mbottom-md">
 			Tags
-		</h1>
+		</h2>
 
 		<div class="flex gap">
 			<div class="tag red inline-block">
@@ -152,9 +144,9 @@ UI Elements
 		<!-- Callouts -->
 		<div>
 
-			<h1 class="mbottom-md mtop-xl">
+			<h2 class="mbottom-md mtop-xl">
 				Callout
-			</h1>
+			</h2>
 
 			<!-- Small Callout -->
 			<Callout
@@ -192,9 +184,9 @@ UI Elements
 
 
 		<!-- Cards & Layouts -->
-		<h1 class="mtop-xl mbottom-sm">
+		<h2 class="mtop-xl mbottom-sm">
 			Cards & Loaders
-		</h1>
+		</h2>
 
 		<div class="card max-width-small">
 			<p>
@@ -216,18 +208,10 @@ UI Elements
 			</div>
 		</div>
 
-		<div class="well max-width-small red mtop-md">
-			<h5 class="mbottom-xxs">Wells</h5>
-			<p>
-				Wells are similar to cards or callouts, but simpler. Just a colored background and border around text (or anything else). Add class <code>.well</code> and the color you'd like to a div.
-			</p>
-		</div>
 
-
-
-		<h1 class="mtop-xl mbottom-sm">
+		<h2 class="mtop-xl mbottom-sm">
 			Other Stuff
-		</h1>
+		</h2>
 
 
 		<h4 class="mbottom-sm mtop-lg">BreadCrumbs</h4>
@@ -254,14 +238,11 @@ UI Elements
 
 <script>
 // Components
-import Toggle from "@/components/ui/Common/Toggle";
 import Callout from "@/components/ui/Common/Callout";
-const BaseDefinitions = require("@/definitions/BaseDefinitions.js");
 
 export default {
   	name: "DesignUI",
   	components: {
-		  Toggle,
 		  Callout,
 	},
 	mixins: [
@@ -269,7 +250,6 @@ export default {
 	data() {
 		return{
 			// Definitions
-			colors: BaseDefinitions.theme_colors,
 			// Hold/Toggle
 			hold: {
 				selectedColor: "red",

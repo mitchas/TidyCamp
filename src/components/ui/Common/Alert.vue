@@ -1,5 +1,5 @@
 <!-- 
-//! Alert
+Alert
  	Alert element to display short messages
  	Called from plugins with hello("message", "fa font-awesome-icon", color) defined in plugins.js
 -->

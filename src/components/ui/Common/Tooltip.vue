@@ -1,9 +1,9 @@
 <!--
-//! Tooltip Component
-// Example format:
-// <Tooltip :link="https://optional-link" linkText="Read More" color="red" icon="f6af">
-// 		Slot content
-// </Tooltip>
+Tooltip Component
+ Example format:
+ <Tooltip :link="https://optional-link" linkText="Read More" color="red" icon="f6af">
+		Slot content
+ </Tooltip>
 -->
 
 <template>

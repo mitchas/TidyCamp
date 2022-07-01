@@ -1,8 +1,7 @@
 <!-- 
-//! Confirm Component
-// Example: 
-// <Confirm v-if="show" title="Title" body="Body" confirmText="Yes" cancelText="No, Cancel" v-on:confirmFalse="show = false" v-on:confirmTrue="doSomething()"></Confirm>
-// 
+Confirm Component
+Example: 
+<Confirm v-if="show" title="Title" body="Body" confirmText="Yes" cancelText="No, Cancel" v-on:confirmFalse="show = false" v-on:confirmTrue="doSomething()"></Confirm>
 -->
 <template>
 	<div>
