@@ -1,6 +1,6 @@
 # Tidy.camp
 
-## Work in Progress: A collection of small, private web apps.
+## WIP: A collection of small, private web apps.
 
 ____
 
